@@ -23,11 +23,28 @@ session_start();
                 <li><a href="/Carrinho/index.php">Home</a></li>
                 <li><a href="/Carrinho/views/carrinho.php">Carrinho</a></li>
                 <li>
-                    <a href="/Carrinho/views/login.php"><span class="material-symbols-outlined">
+                    <a href="/Carrinho/controllers/logout_controller.php"><span class="material-symbols-outlined">
                         person
-                        </span>Login</a>
+                        </span>Logout</a>
                 </li>
             </ul>
         </nav>        
     </header>
     <main>
+
+
+
+<p>
+    carrosel
+</p>
+
+<p>
+    imagens produtos
+</p>
+
+
+
+
+<?php 
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/rodape.php";
+?>
