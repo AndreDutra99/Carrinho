@@ -12,7 +12,7 @@ function login($email, $password) {
         $password = htmlspecialchars($password);
 
         // Execute uma consulta para selecionar o usuário com base no nome de usuário fornecido
-        $sql = "SELECT * FROM carrinho WHERE email = :email";
+        $sql = "SELECT * FROM usuario WHERE email = :email";
         $conn = Conexao::conectar(); // tem que conectar antes sempre, essa linha faz isso.
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
