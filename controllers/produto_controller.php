@@ -1,6 +1,6 @@
 <?php
 // Incluir o arquivo de conexão com o banco de dados
-require_once $_SERVER["DOCUMENT_ROOT"] . '/Carrinho/db/conexao.php';
+require_once '../db/conexao.php';
 
 // Função para cadastrar um novo produto
 function cadastrarProduto($nome_produto, $preco, $imagem_produto) {

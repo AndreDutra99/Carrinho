@@ -3,7 +3,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
 ?>
 
 <div>
-        <form action="login_controller.php" autocomplete="on" method="POST">
+        <form action="/Carrinho/controllers/login_controller.php" autocomplete="on" method="POST">
             <fieldset id="loginmod">
                 <h1 id="h1style">Login</h1>
                 <p class= "fontelogin" style="margin-bottom: 10px;">Digite os seus dados de acesso nos campos abaixo.</p> 

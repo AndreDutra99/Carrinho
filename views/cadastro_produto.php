@@ -3,12 +3,12 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
 ?>
 
 <div>
-        <form action="produto_controller.php" autocomplete="off" method="POST">
+        <form action="/Carrinho/controllers/produto_controller.php" autocomplete="off" method="POST">
             <fieldset id="loginmod">
                 <h1 id="h1style">Cadastrar Produto</h1>
                 <p class= "fontelogin" style="margin-bottom: 10px;">Insira os dados do produto nos campos abaixo.</p> 
                  <div style="margin-bottom: 10px;">
-                    <input type="text" class="bordainput meu-input" name="nome" id="nome" placeholder="Nome do Produto" required>
+                    <input type="text" class="bordainput meu-input" name="nome_produto" id="nome_produto" placeholder="Nome do Produto" required>
                 </div>
                 <div style="margin-bottom: 10px;">
                     <input type="price" class="bordainput meu-input" name="preco" id="preco" placeholder="Senha" required>
