@@ -3,15 +3,15 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . '/Carrinho/db/conexao.php';
 
 // Função para cadastrar um novo produto
-function cadastrarProduto($nome, $preco, $imagem) {
+function cadastrarProduto($nome_produto, $preco, $imagem_produto) {
     global $conn;
 
     try {
-        $sql = "INSERT INTO produto (nome, preco, imagem) VALUES (:nome, :preco, :imagem)";
+        $sql = "INSERT INTO produto (nome_produto, preco, imagem_produto) VALUES (:nome_produto, :preco, :imagem_produto)";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':nome_produto', $nome_produto);
         $stmt->bindParam(':preco', $preco);
-        $stmt->bindParam(':imagem', $imagem);
+        $stmt->bindParam(':imagem_produto', $imagem_produto);
         $stmt->execute();
 
         // Retorna o ID do produto recém-cadastrado
@@ -24,15 +24,15 @@ function cadastrarProduto($nome, $preco, $imagem) {
 }
 
 // Função para atualizar os dados de um produto
-function atualizarProduto($id, $nome, $preco, $imagem) {
+function atualizarProduto($id, $nome_produto, $preco, $imagem_produto) {
     global $conn;
 
     try {
-        $sql = "UPDATE produto SET nome = :nome, preco = :preco, imagem= :imagem WHERE id = :id";
+        $sql = "UPDATE produto SET nome_produto = :nome_produto, preco = :preco, imagem_produto= :imagem_produto WHERE id = :id";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam('nome_produto', $nome_produto);
         $stmt->bindParam(':preco', $preco);
-        $stmt->bindParam(':imagem', $imagem);
+        $stmt->bindParam(':imagem_produto', $imagem_produto);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 

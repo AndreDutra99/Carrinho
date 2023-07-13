@@ -15,7 +15,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
                 </div>
                 <div style="margin-bottom: 10px;">
                     <label for="imagem">Selecione uma imagem:</label>
-                    <input type="file" name="imagem" id="imagem">
+                    <input type="file" name="imagem_produto" id="imagem_produto">
                 </div>
                 
                 <button type="submit" id="buttonb">Cadastrar</button> 
