@@ -4,12 +4,12 @@
 require_once '../db/conexao.php';
 
 // Função para realizar o login
-function login($email, $password) {
+function login($email, $senha) {
     // Verifique se o nome de usuário e a senha foram fornecidos
     if (!empty($email) && !empty($password)) {
         // Sanitize os dados de entrada
         $email = htmlspecialchars($email);
-        $password = htmlspecialchars($password);
+        $senha = htmlspecialchars($senha);
 
         // Execute uma consulta para selecionar o usuário com base no nome de usuário fornecido
         $sql = "SELECT * FROM usuario WHERE email = :email";
@@ -20,10 +20,10 @@ function login($email, $password) {
 
         if ($stmt->rowCount() == 1) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $hashed_password = $row['password'];
+            $hashed_senha = $row['senha'];
 
             // Verifique se a senha fornecida corresponde à senha armazenada no banco de dados
-            if (password_verify($password, $hashed_password)) {
+            if (password_verify($senha, $hashed_senha)) {
                 // Autenticação bem-sucedida
                 // Inicie uma sessão e armazene as informações do usuário, se necessário
                 session_start();
@@ -31,7 +31,7 @@ function login($email, $password) {
                 $_SESSION['email'] = $row['email'];
 
                 // Redirecione para a página de perfil ou área restrita
-                header('Location:/Carrinho/views/index_u.php');
+                header('Location:/Carrinho/index.php');
                 exit();
             } else {
                 // Senha incorreta

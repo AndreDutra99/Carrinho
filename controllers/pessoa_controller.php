@@ -5,13 +5,13 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . '/Carrinho/db/conexao.php';
 
 // Função para cadastrar um novo usuário
-function cadastrar($username, $email, $password) {
+function cadastrar($nome, $email, $senha) {
     // Verifique se o nome de usuário e a senha foram fornecidos
-    if (!empty($username) && !empty($email) && !empty($password)) {
+    if (!empty($nome) && !empty($email) && !empty($senha)) {
         // Sanitize os dados de entrada
-        $username = htmlspecialchars($username);
+        $username = htmlspecialchars($nome);
         $email = htmlspecialchars($email);
-        $password = htmlspecialchars($password);
+        $senha = htmlspecialchars($senha);
 
         // Verifique se o nome de usuário já existe no banco de dados
         $sql = "SELECT * FROM usuario WHERE email = :email";
@@ -23,14 +23,14 @@ function cadastrar($username, $email, $password) {
         if ($stmt->rowCount() == 0) {
             // O nome de usuário não existe, então podemos prosseguir com o cadastro
             // Hash da senha
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $hashed_senha = password_hash($senha, PASSWORD_DEFAULT);
 
             // Execute a consulta para inserir o novo usuário no banco de dados
-            $sql = "INSERT INTO usuario (username, email, password) VALUES (:username, :email, :password)";
+            $sql = "INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $hashed_password);
+            $stmt->bindParam(':senha', $hashed_senha);
             $stmt->execute();
 
             // Cadastro bem-sucedido

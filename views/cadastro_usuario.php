@@ -8,10 +8,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
                 <h1 id="h1style">Cadastre-se</h1>
                 <p class= "fontelogin" style="margin-bottom: 10px;">Preencha os campos abaixo.</p> 
                 <div style="margin-bottom: 10px;">
-                    <input type="mail" class="bordainput meu-input" name="email" id="email" placeholder="E-mail" required autofocus>
-                </div>
-                 <div style="margin-bottom: 10px;">
                     <input type="text" class="bordainput meu-input" name="username" id="username" placeholder="Nome de usuário" required>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="mail" class="bordainput meu-input" name="email" id="email" placeholder="E-mail" required >
                 </div>
                 <div style="margin-bottom: 10px;">
                     <input type="password" class="bordainput meu-input" name="senha" id="senha" placeholder="Senha" required>
