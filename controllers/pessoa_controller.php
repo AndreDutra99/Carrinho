@@ -42,12 +42,29 @@ function cadastrar($nome, $email, $senha) {
             header('Location: /Carrinho/index.php');
             exit();
         } else {
-            // O nome de usuário já existe
-            echo "Nome de usuário já cadastrado.";
+            // O email de usuário já existe
+            echo "Email de usuário já cadastrado.";
         }
     } else {
         // Campos em branco
         echo "Por favor, preencha todos os campos.";
     }
+}
+
+try {
+     // Verifique se o formulário foi enviado
+     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        // Obtenha as variáveis do formulário
+        $nome = $_POST["nome"];
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
+
+        // Chamada da função que deseja executar
+    cadastrar($nome, $email, $senha);
+    }
+    
+} catch (Exception $e) {
+    // Tratamento da exceção
+    echo "Ocorreu um erro: " . $e->getMessage();
 }
 
