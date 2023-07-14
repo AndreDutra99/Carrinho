@@ -24,6 +24,21 @@ session_start();
             <ul>
                 <li><a href="/Carrinho/index.php">Home</a></li>
                 <li><a href="/Carrinho/views/carrinho.php">Carrinho</a></li>
+                <?php
+
+                    if (isset($_SESSION['user_id'])  && $_SESSION['nivel_acesso'] == 2) :
+                        // O usuário logado for nível 2, exibir botão de adicionar produto
+                    ?>
+                        <li><a href="/Carrinho/views/cadastro_produto.php">Adicionar Produto</a></li>
+                    <?php
+                    else :
+                        //se não, não exibir nada
+                    ?>
+                       
+                    <?php
+                    endif;
+                    ?>
+                
                 <li>
 
                     <?php
