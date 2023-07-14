@@ -31,7 +31,7 @@ nav ul {
     list-style: none; /* especifica o estilo para uma lista como padrão*/
     margin: 0; /* define a área de margem nos quatro lados do elemento */
     padding: 0; /* é responsável por definir uma distância interna entre um elemento e sua borda */
-    background-color:#FB732C; /* cor do menu de navegação */
+    background-color:#2c82fb; /* cor do menu de navegação */
 }
   
 nav li {
@@ -63,7 +63,7 @@ footer {
     align-items: center; /* Os itens são centralizados no eixo transversal */
     flex-wrap:wrap; /* serve para definir se os itens dentro do contêiner poderão ocupar multiplas linhas ou não. Se sim, os elementos quebradão linha quando chegar no limite do elemento pai, caso não, os elementos serão dimencionados de forma a caberem no elemento pai */
     flex-direction: row; /* permite alterar a direção na qual os elementos flex serão exibidos ao longo do eixo principal */
-    background-color:#FB732C;
+    background-color:#2c82fb;
     color:#F9F8F8;
     left: 0; /* fica colado a esquerda */
     right: 0;
@@ -140,7 +140,7 @@ footer {
     width: 300px;
     height: 40px;
     border-radius: 10px;
-    background-color: #FB732C;
+    background-color: #2c82fb;
     color: #F9F8F8;
     border: none;
 }
