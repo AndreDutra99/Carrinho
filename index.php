@@ -29,7 +29,7 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
         <p>Preço: R$ <?php echo $produto['preco']; ?></p>
 
         <?php if (!$carrinhoVazio): ?>
-            <form method="POST" action="adicionar_ao_carrinho.php">
+            <form method="POST" action="/Carrinho/controllers/adicionar_ao_carrinho.php">
                 <input type="hidden" name="id_produto" value="<?php echo $produto['id_produto']; ?>">
                 <input type="hidden" name="nome_produto" value="<?php echo $produto['nome_produto']; ?>">
                 <input type="hidden" name="preco" value="<?php echo $produto['preco']; ?>">
