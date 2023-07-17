@@ -1,7 +1,7 @@
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
-require_once '/Carrinho/db/conexao.php';
-require_once '/Carrinho/controllers/produto_controller.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/Carrinho/db/conexao.php';
+
 
 // Função para obter todos os produtos do banco de dados
 function obterProdutos() {
@@ -72,8 +72,8 @@ $produtos = obterProdutos();
         <label for="imagem_produto">Imagem do Produto:</label>
         <input type="text" id="imagem_produto" name="imagem_produto" value="<?php echo $produto['imagem_produto']; ?>"><br>
 
-        <input type="submit" name="atualizar" value="Atualizar">
-        <input type="submit" name="excluir" value="Excluir">
+        <button type="submit" name="acao" value="atualizar">Atualizar</button>
+        <button type="submit" name="acao" value="excluir">Excluir</button>
     </form>
     <br>
     <?php } ?>

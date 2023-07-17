@@ -31,6 +31,7 @@ function login($email, $senha) {
                 session_start();
                 $_SESSION['user_id'] = $row['id_usuario'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['nivel_acesso'] = $row['nivel_acesso'];
 
 
 

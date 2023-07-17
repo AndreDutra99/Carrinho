@@ -1,13 +1,13 @@
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
-require_once "/Carrinho/db/conexao.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/db/conexao.php";
 
 try {
     // Conexão com o banco de dados
     $conn = Conexao::conectar();
 
     // Consulta SQL para obter os produtos disponíveis
-    $sql = "SELECT id_produto, nome_produto, preco FROM produto";
+    $sql = "SELECT id_produto, nome_produto, preco, imagem_produto FROM produto";
     $stmt = $conn->query($sql);
     $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
