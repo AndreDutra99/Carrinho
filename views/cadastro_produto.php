@@ -11,7 +11,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
                     <input type="text" class="bordainput meu-input" name="nome_produto" id="nome_produto" placeholder="Nome do Produto" required>
                 </div>
                 <div style="margin-bottom: 10px;">
-                    <input type="price" class="bordainput meu-input" name="preco" id="preco" placeholder="Senha" required>
+                    <input type="text" class="bordainput meu-input" name="preco" id="preco" placeholder="Preço do Produto" required>
                 </div>
                 <div style="margin-bottom: 10px;">
                     <label for="imagem">Selecione uma imagem:</label>

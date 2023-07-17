@@ -1,7 +1,6 @@
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
 
-session_start();
 
 function calcularTotalCarrinho()
 {

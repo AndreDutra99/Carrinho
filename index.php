@@ -1,5 +1,6 @@
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
+require_once "/Carrinho/db/conexao.php";
 
 try {
     // Conexão com o banco de dados
