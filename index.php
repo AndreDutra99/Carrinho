@@ -27,7 +27,7 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
     <div>
         <h3><?php echo $produto['nome_produto']; ?></h3>
         <p>Preço: R$ <?php echo $produto['preco']; ?></p>
-
+        <img src="<?php echo $produto['imagem_produto']; ?>" alt="Imagem do Produto">
         <?php if (!$carrinhoVazio): ?>
             <form method="POST" action="/Carrinho/controllers/adicionar_ao_carrinho.php">
                 <input type="hidden" name="id_produto" value="<?php echo $produto['id_produto']; ?>">
