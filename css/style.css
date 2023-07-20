@@ -57,7 +57,7 @@ nav li a:hover {
   /* style footer início */
 
 footer {
-    position: fixed; /* mantém a posição fixa do rodapé em relação a página */
+    position: absolute; /* mantém a posição fixa do rodapé em relação a página */
     justify-content: space-between;
     display: flex; /* Quando colocamos essa propriedade em um elemento, esse elemento se torna um flex container, a partir daí podemos manipular todos os elementos filhos desse flex container com propriedades novas */
     align-items: center; /* Os itens são centralizados no eixo transversal */
@@ -165,3 +165,8 @@ footer {
 }
 
 /* Login style fim */
+
+.tamimg{
+    width: 2rem;
+    height: 2rem;
+}

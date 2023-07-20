@@ -81,7 +81,7 @@ try {
         // Obtenha as variáveis do formulário
         $nome_produto = $_POST["nome_produto"];
         $preco = $_POST["preco"];
-        $imagem_produto = $_POST["imagem_produto"];
+        $imagem_produto = file_get_contents($_FILES["imagem_produto"]['tmp_name']);
 
         // Chamada da função que deseja executar
         cadastrarProduto($nome_produto, $preco, $imagem_produto);

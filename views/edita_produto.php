@@ -57,7 +57,7 @@ $produtos = obterProdutos();
 
 ?>
 
-    <h1>Editar Produtos</h1>
+<!--     <h1>Editar Produtos</h1>
 
     <?php foreach ($produtos as $produto) { ?>
     <form action="/Carrinho/controllers/produto_controller.php" method="POST">
@@ -70,13 +70,42 @@ $produtos = obterProdutos();
         <input type="text" id="preco" name="preco" value="<?php echo $produto['preco']; ?>" required><br>
 
         <label for="imagem_produto">Imagem do Produto:</label>
-        <input type="text" id="imagem_produto" name="imagem_produto" value="<?php echo $produto['imagem_produto']; ?>"><br>
+        <img class="tamimg" src="data:image;charset=utf8;base64,<?php echo base64_encode($produto['imagem_produto']); ?>" alt="Imagem do Produto"><br>
 
-        <button type="submit" name="acao" value="atualizar">Atualizar</button>
+        <button type="submit" name="acao" value="atualizar">Editar</button>
         <button type="submit" name="acao" value="excluir">Excluir</button>
     </form>
-    <br>
-    <?php } ?>
+    <?php } ?> -->
+
+    <h1>Editar Produtos - Tabela</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($produtos as $produto) { ?>
+            <tr>
+                <td><img class="tamimg" src="data:image;charset=utf8;base64,<?php echo base64_encode($produto['imagem_produto']); ?>" alt="Imagem do Produto"></td>
+                <td><?php echo $produto['nome_produto']; ?></td>
+                <td><?php echo $produto['preco']; ?></td>
+                <td>
+                    <form action="/Carrinho/controllers/produto_controller.php" method="POST">
+                        <input type="hidden" name="id_produto" value="<?php echo $produto['id_produto']; ?>">
+                        <button type="submit" name="acao" value="atualizar">Editar</button>
+                        <button type="submit" name="acao" value="excluir">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+
 
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/rodape.php";
