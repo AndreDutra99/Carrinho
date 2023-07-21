@@ -43,8 +43,7 @@ function login($email, $senha) {
                 echo "Senha incorreta.";
             }
         } else {
-            // Usuário não encontrado
-            echo "Nome de usuário não existe.";
+            setcookie('erro', 'Email ou senha incorretos', time() + 3600, '/');
         }
     } else {
         // Campos em branco
@@ -52,9 +51,6 @@ function login($email, $senha) {
     }
 }
 
-/* $stmt = $conn->prepare("SELECT email, senha FROM usuario");
-$stmt->execute();
-$row = $stmt->fetch(PDO::FETCH_ASSOC); */
 
 try {
     // Obtenha as variáveis do banco de dados

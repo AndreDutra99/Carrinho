@@ -30,11 +30,7 @@ session_start();
                     ?>
                         <li><a href="/Carrinho/views/cadastro_produto.php">Adicionar Produto</a></li>
                         <li><a href="/Carrinho/views/edita_produto.php">Editar Produto</a></li>
-                    <?php
-                    else :
-                        //se não, não exibir nada
-                    ?>
-                       
+                  
                     <?php
                     endif;
                     ?>

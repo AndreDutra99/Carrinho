@@ -3,6 +3,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
 ?>
 
 <div>
+        <?php if (isset($_COOKIE['sucesso'])) : ?>
+            <p><?= $_COOKIE['sucesso'] ?></p>
+            <?php setcookie('sucesso', '', time() - 3600, '/') ?>
+        <?php endif; ?>
         <form action="/Carrinho/controllers/pessoa_controller.php" autocomplete="on" method="POST">
             <fieldset id="loginmod">
                 
