@@ -11,6 +11,6 @@ CREATE TABLE usuario (
 CREATE TABLE produto (
     id_produto int PRIMARY KEY AUTO_INCREMENT, 
     nome_produto VARCHAR(255) NOT NULL,  
-    preco FLOAT NOT NULL,  
+    preco DECIMAL(10,2) NOT NULL,  
     imagem_produto LONGBLOB
 );

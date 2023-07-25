@@ -77,7 +77,7 @@ $produtos = obterProdutos();
     </form>
     <?php } ?> -->
 
-    <h1>Editar Produtos - Tabela</h1>
+   <!--  <h1>Editar Produtos - Tabela</h1>
 
 <table>
     <thead>
@@ -104,7 +104,7 @@ $produtos = obterProdutos();
             </tr>
         <?php } ?>
     </tbody>
-</table>
+</table> -->
 
 
 <?php 
