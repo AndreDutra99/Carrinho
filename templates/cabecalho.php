@@ -28,8 +28,8 @@ session_start();
                     if (isset($_SESSION['user_id'])  && $_SESSION['nivel_acesso'] == 2) :
                         // O usuário logado for nível 2, exibir botão de adicionar produto
                     ?>
-                        <li><a href="/Carrinho/views/cadastro_produto.php">Adicionar Produto</a></li>
-                        <li><a href="/Carrinho/views/edita_produto.php">Editar Produto</a></li>
+                        <li><a href="/Carrinho/views/cadastro_produto.php">Adicionar Produtos</a></li>
+                        <li><a href="/Carrinho/views/lista_produto_adm.php">Lista de Produtos</a></li>
                   
                     <?php
                     endif;

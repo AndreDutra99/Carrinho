@@ -166,7 +166,25 @@ footer {
 
 /* Login style fim */
 
+/* editar produto style inicio */
 .tamimg{
-    width: 2rem;
-    height: 2rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
 }
+.table-container {
+    width: 90%; /* Defina a largura do contêiner */
+    margin: 0 auto; /* Centralize o contêiner horizontalmente */
+    padding: 10px; /* Adicione um espaçamento interno para afastar a tabela das bordas */
+}
+
+.st{
+    text-align: center;
+    width: 100%;
+    background-color: #F9F8F8;
+}
+.bordastyle{
+    border: 1px solid black;
+}
+
+/* editar produto style fim */
