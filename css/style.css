@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+html,
+body{
+    position: relative;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+main{
+    padding-bottom: 3rem;
+}
+
 /* style cabeçalho inicio */
 
 nav{
@@ -68,7 +79,7 @@ footer {
     left: 0; /* fica colado a esquerda */
     right: 0;
     width: 100%; /* tamanho do flex container */
-    height: auto; /* determina a altura da área do conteúdo de um elemento em relação ao elemento-pai do box */
+    height: 3rem; /* determina a altura da área do conteúdo de um elemento em relação ao elemento-pai do box */
     bottom: 0; /* define a posição vertical do elemento em relação a sua borda inferior */
 }
   

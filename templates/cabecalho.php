@@ -61,4 +61,4 @@ session_start();
             </ul>
         </nav>
     </header>
-    <main role="main">
+    <main>

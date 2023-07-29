@@ -2,67 +2,77 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . '/Carrinho/db/conexao.php';
 
-// Função para obter todos os produtos do banco de dados
-function obterProdutos() {
-    global $conn;
+// Verifica se o ID do produto foi passado pela URL
+if (isset($_GET['id_produto'])) {
+    $id_produto = $_GET['id_produto'];
 
-    try {
-        $sql = "SELECT * FROM produto";
-        $conn = Conexao::conectar(); 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Função para obter um produto por ID do banco de dados
+    function obterProdutoPorId($id_produto)
+    {
+        // O código para a conexão com o banco de dados deve estar aqui
+        // Substitua os valores necessários para realizar a conexão
 
-        return $produtos;
-    } catch (PDOException $e) {
-        // Tratar erros de consulta
-        echo "Erro ao obter produtos: " . $e->getMessage();
-        return array();
-    }
-}
+        try {
+            $sql = "SELECT * FROM produto WHERE id_produto = :id_produto";
+            $conn = Conexao::conectar();
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_produto', $id_produto);
+            $stmt->execute();
 
-// Verificar se o formulário foi submetido para atualizar ou excluir um produto
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar se o botão de atualizar foi clicado
-    if (isset($_POST['atualizar'])) {
-        $id_produto = $_POST['id_produto'];
-        $nome_produto = $_POST['nome_produto'];
-        $preco = $_POST['preco'];
-        $imagem_produto = $_POST['imagem_produto'];
-
-        // Chamar a função para atualizar o produto
-        if (atualizarProduto($id_produto, $nome_produto, $preco, $imagem_produto)) {
-            echo "Produto atualizado com sucesso.";
-        } else {
-            echo "Erro ao atualizar o produto.";
+            // Retorna os dados do produto como um array associativo
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Tratar erros de consulta
+            echo "Erro ao obter produto: " . $e->getMessage();
+            return false;
         }
     }
 
+    // Obtém os detalhes do produto pelo ID
+    $produto = obterProdutoPorId($id_produto);
+
+    // Verifica se o produto foi encontrado
+    if (!$produto) {
+        echo "Produto não encontrado.";
+        exit;
+    }
+} else {
+    echo "ID do produto não fornecido.";
+    exit;
 }
-
-// Obter os produtos do banco de dados
-$produtos = obterProdutos();
-
 ?>
 
-    <h1>Editar Produtos</h1>
+<div>
+    
+    <form action="/Carrinho/controllers/produto_controller.php" method="POST" enctype="multipart/form-data">
+        <fieldset id="loginmod">
+            <h1 id="h1style">Editar Produto</h1>
+            <input type="hidden" name="id_produto" value="<?php echo $produto['id_produto']; ?>">
 
-    <?php foreach ($produtos as $produto) { ?>
-    <form action="/Carrinho/controllers/produto_controller.php" method="POST">
-        <input type="hidden" name="id_produto" value="<?php echo $produto['id_produto']; ?>">
+            <div style="margin-bottom: 10px;">
+                <img class="tamimg" src="data:image;charset=utf8;base64,<?php echo base64_encode($produto['imagem_produto']); ?>" alt="Imagem do Produto">
+            </div>
 
-        <label for="nome_produto">Nome do Produto:</label>
-        <input type="text" id="nome_produto" name="nome_produto" value="<?php echo $produto['nome_produto']; ?>" required><br>
+            <div style="margin-bottom: 10px;">
+                <label for="nome_produto">Nome do Produto:</label>
+                <input type="text" id="nome_produto" name="nome_produto" value="<?php echo $produto['nome_produto']; ?>" required>
+            </div>
 
-        <label for="preco">Preço do Produto:</label>
-        <input type="text" id="preco" name="preco" value="<?php echo $produto['preco']; ?>" required><br>
+            <div style="margin-bottom: 10px;">
+                <label for="preco">Preço do Produto:</label>
+                <input type="text" id="preco" name="preco" value="<?php echo $produto['preco']; ?>" required>
+            </div>
 
-        <label for="imagem_produto">Imagem do Produto:</label>
-        <img class="tamimg" src="data:image;charset=utf8;base64,<?php echo base64_encode($produto['imagem_produto']); ?>" alt="Imagem do Produto">
+            <div style="margin-bottom: 10px;">
+                <label for="nova_imagem_produto">Alterar Imagem do Produto:</label>
+                <input type="file" id="nova_imagem_produto" name="nova_imagem_produto">
+            </div>
 
-        <button type="submit" name="acao" value="atualizar">Editar</button>
+            <button type="submit" id="buttonb" name="acao" value="atualizar">Salvar Edições</button>
+
+        </fieldset>
     </form>
-    <?php } ?>
+</div>
 
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/rodape.php";
