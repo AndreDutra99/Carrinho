@@ -14,6 +14,11 @@ session_start();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" /> <!-- link do icone -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet" />
+    <!-- css bootstrap -->
+    <link rel="stylesheet" href="/Carrinho/css/bootstrap.css">
+    <!-- js bootstrap -->
+    <script src="/Carrinho/js/bootstrap.bundle.js" defer></script>
+    <!-- css personalizado -->
     <link rel="stylesheet" href="/Carrinho/css/style.css">
 </head>
 

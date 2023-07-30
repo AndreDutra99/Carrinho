@@ -43,12 +43,12 @@ $produtos = obterProdutos();
                 <tr>
                     <td class="bordastyle"><img class="tamimg" src="data:image;charset=utf8;base64,<?php echo base64_encode($produto['imagem_produto']); ?>" alt="Imagem do Produto"></td>
                     <td class="bordastyle"><?php echo $produto['nome_produto']; ?></td>
-                    <td class="bordastyle"><?php echo $produto['preco']; ?></td>
+                    <td class="bordastyle"> R$ <?php echo $produto['preco']; ?></td>
                     <td class="bordastyle">
                         <form action="/Carrinho/controllers/produto_controller.php" method="POST">
                             <input type="hidden" name="id_produto" value="<?php echo $produto['id_produto']; ?>">
                             <!-- Adicione o ID do produto na URL do botão "Editar" -->
-                            <a href="/Carrinho/views/edita_produto.php?id_produto=<?php echo $produto['id_produto']; ?>">
+                            <a href="/Carrinho/views/edita_produto.php?id_produto=<?php echo $produto['id_produto']; ?>" class="link-sem-barra">
                                 <button type="button">Editar</button>
                             </a>
                             

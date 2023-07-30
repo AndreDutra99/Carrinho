@@ -1,5 +1,5 @@
 <?php 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
+session_start();
 
 
 // Verificar se o ID, nome, preço e quantidade foram fornecidos
@@ -39,15 +39,13 @@ if (isset($_POST['id_produto']) && isset($_POST['nome_produto']) && isset($_POST
     }
 
     // Redirecionar de volta para a página de produtos
-    header('Location: /Carrinho/index.php');
+    header('Location: /Carrinho/views/carrinho.php');
     exit();
 } else {
-    // Se os dados necessários não forem fornecidos, defina um cookie de erro
-    if (!isset($_POST['id_produto']) || !isset($_POST['nome_produto']) || !isset($_POST['preco']) || !isset($_POST['quantidade'])) {
+    // Se os dados necessários não foram fornecidos, defina um cookie de erro
     setcookie('erro', 'Os dados necessários não foram fornecidos', time() + 3600, '/');
     header('Location: /Carrinho/views/erro.php');
     exit();
-    }
 
 }
 

@@ -104,6 +104,10 @@ footer {
 .link-sem-barra {
     text-decoration: none;
 }
+
+.espaco{
+    margin-bottom: 1px;
+}
   
   /*style footer final*/
 
@@ -177,7 +181,7 @@ footer {
 
 /* Login style fim */
 
-/* editar produto style inicio */
+/* listar produto style inicio */
 .tamimg{
     width: 10rem;
     height: 10rem;
@@ -198,4 +202,13 @@ footer {
     border: 1px solid black;
 }
 
-/* editar produto style fim */
+/* listar produto style fim */
+
+/* style index inicio */
+
+.imagem-produto {
+    width: 25rem; /* Tamanho desejado para a largura */
+    height: 25rem; /* A altura será ajustada proporcionalmente à largura */
+  }
+
+/* style index fim */
