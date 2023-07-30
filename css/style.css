@@ -212,3 +212,27 @@ footer {
   }
 
 /* style index fim */
+
+/* style listar produto inicio */
+#buttonmod{
+    background-color: black;
+    color: #F9F8F8;
+    width: 80px;
+    height: auto;
+    border-radius: 10px;
+    border: none;
+}
+
+/* style listar produto fim */
+
+/* style carrinho inicio */
+
+#buttonmod2{
+    background-color: black;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* style carrinho final */

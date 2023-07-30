@@ -1,31 +1,29 @@
 <?php
 session_start();
 
-// Verificar se o nome e a quantidade foram fornecidos
-if (isset($_POST['nome_produto']) && isset($_POST['quantidade'])) {
+// Verificar se o nome do item foi fornecido e não é vazio
+if (isset($_POST['nome_produto']) && $_POST['nome_produto'] !== '') {
     $nome_produto = $_POST['nome_produto'];
-    $quantidade = $_POST['quantidade'];
 
     // Verificar se o carrinho existe na sessão
     if (isset($_SESSION['carrinho'])) {
-        // Percorrer o carrinho e atualizar a quantidade do item correspondente
-        foreach ($_SESSION['carrinho'] as &$item) {
+        // Percorrer o carrinho e verificar se o item corresponde ao nome fornecido
+        foreach ($_SESSION['carrinho'] as $indice => $item) {
             if ($item['nome_produto'] == $nome_produto) {
-                $item['quantidade'] = $quantidade;
+                // Aumentar a quantidade do item em 1
+                $_SESSION['carrinho'][$indice]['quantidade'] += 1;
                 break;
             }
         }
     }
 
     // Redirecionar de volta para a página do carrinho
-    header('Location: /Carrinho/index.php');
+    header('Location: /Carrinho/views/carrinho.php');
     exit();
 } else {
-    // Se os dados necessários não forem fornecidos, defina um cookie de erro
-    if (!isset($_POST['id_produto']) || !isset($_POST['nome_produto']) || !isset($_POST['preco']) || !isset($_POST['quantidade'])) {
-        setcookie('erro', 'Os dados necessários não foram fornecidos', time() + 3600, '/');
-        header('Location: /Carrinho/views/erro.php');
-        exit();
-    }
+    // Se o nome do produto não foi fornecido ou está vazio, defina um cookie de erro
+    setcookie('erro', 'O nome do produto não foi fornecido', time() + 3600, '/');
+    header('Location: /Carrinho/views/erro.php');
+    exit();
 }
 ?>

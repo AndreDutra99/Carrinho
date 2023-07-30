@@ -29,9 +29,9 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <?php foreach ($produtos as $produto): ?>
-            <div class="carousel-item active">
-            <img src="data:image;charset=utf8;base64,<?= base64_encode($produto['imagem_produto']); ?>" class="d-block w-100 imagem-produto" alt="...">
+            <?php foreach ($produtos as $index => $produto): ?>
+            <div class="carousel-item <?= ($index === 0) ? 'active' : ''; ?>">
+                <img src="data:image;charset=utf8;base64,<?= base64_encode($produto['imagem_produto']); ?>" class="d-block w-100 imagem-produto" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Roupas Top 1</h5>
                     <p>As melhores roupas do mercado.</p>
@@ -61,7 +61,8 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
                     <input type="hidden" name="id_produto" value="<?= $produto['id_produto'] ?>">
                     <input type="hidden" name="nome_produto" value="<?= $produto['nome_produto'] ?>">
                     <input type="hidden" name="preco" value="<?= $produto['preco'] ?>">
-                    <input type="number" name="quantidade" value="1" min="1" required>
+                    <input type="hidden" name="imagem_produto" value="<?= base64_encode($produto['imagem_produto']); ?>">
+                    <input type="hidden" name="quantidade" value="1" min="1">
                     <button type="submit" class="btn btn-primary">Carrinho</button>
                 </form>
             </div>

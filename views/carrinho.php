@@ -23,6 +23,7 @@ function calcularTotalCarrinho()
         <table class="st">
             <thead>
                 <tr>
+                    <th>Imagem</th>
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Quantidade</th>
@@ -34,24 +35,23 @@ function calcularTotalCarrinho()
             <tbody>
                 <?php foreach ($_SESSION['carrinho'] as $item): ?>
                     <tr>
+                        <td class="bordastyle"><img class="tamimg" src="data:image;charset=utf8;base64,<?php echo base64_encode($item['imagem_produto']); ?>" alt="..."></td>
                         <td><?php echo $item['nome_produto']; ?></td>
                         <td><?php echo $item['preco']; ?></td>
                         <td><?php echo $item['quantidade']; ?></td>
                         <td> R$ <?php echo $item['preco'] * $item['quantidade']; ?></td>
                         <td> 
                             <!-- Formulário para adicionar item -->
-                            <form action="/Carrinho/controllers/adicionar_ao_carrinho.php" method="post">
-                                <input type="hidden" name="id_produto" value="<?php echo $item['id_produto']; ?>">
+                            <form action="/Carrinho/controllers/atualizar_quantidade.php" method="post">
                                 <input type="hidden" name="nome_produto" value="<?php echo $item['nome_produto']; ?>">
-                                <input type="hidden" name="preco" value="<?php echo $item['preco']; ?>">
-                                <button type="submit" class="link-sem-barra">Adicionar</button>
+                                <button type="submit" id="buttonmod" class="link-sem-barra">Adicionar</button>
                             </form>
                         </td>
                         <td>
                             <!-- Formulário para remover item -->
                             <form action="/Carrinho/controllers/remover_item.php" method="post">
                                 <input type="hidden" name="nome_produto" value="<?php echo $item['nome_produto']; ?>">
-                                <button type="submit" class="link-sem-barra">Remover</button>
+                                <button type="submit" id="buttonmod" class="link-sem-barra">Remover</button>
                             </form>
                         </td>
                     </tr>
@@ -64,8 +64,8 @@ function calcularTotalCarrinho()
                 </tr>
                 <tr>
                     <td colspan="6">
-                        <button>
-                            <a href="checkout.php" class="link-sem-barra">Finalizar Compra</a>
+                        <button id="buttonmod2">
+                            <a href="checkout.php" style="color: white;" class="link-sem-barra">Finalizar Compra</a>
                         </button>
                     </td>  
                 </tr>
