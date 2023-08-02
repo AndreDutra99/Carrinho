@@ -31,7 +31,7 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
         <div class="carousel-inner">
             <?php foreach ($produtos as $index => $produto): ?>
             <div class="carousel-item <?= ($index === 0) ? 'active' : ''; ?>">
-                <img src="data:image;charset=utf8;base64,<?= base64_encode($produto['imagem_produto']); ?>" class="d-block w-100 imagem-produto" alt="...">
+                <img src="data:image;charset=utf8;base64,<?= base64_encode($produto['imagem_produto']); ?>" class="d-block w-100 imagem-produto" style="width: auto; height: 600px" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Roupas Top 1</h5>
                     <p>As melhores roupas do mercado.</p>
@@ -53,7 +53,7 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
 <div class="d-flex justify-content-evenly flex-wrap m-3">
     <?php foreach ($produtos as $produto): ?>
         <div class="card m-3" style="width: 18rem;">
-            <img src="data:image;charset=utf8;base64,<?= base64_encode($produto['imagem_produto']); ?>" class="card-img-top" alt="...">
+            <img src="data:image;charset=utf8;base64,<?= base64_encode($produto['imagem_produto']); ?>" class="card-img-top" style="width: auto; height: 250px" alt="...">
             <div class="card-body">
                 <p class="card-text"><?= $produto['nome_produto'] ?></p>
                 <p class="card-text"> R$ <?= $produto['preco'] ?></p>
