@@ -1,6 +1,8 @@
-<?php 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
+<?php
+// Iniciar a sessão (caso ainda não tenha sido iniciada)
+session_start();
 require_once $_SERVER["DOCUMENT_ROOT"] . '/Carrinho/db/conexao.php';
+
 
 // Verifica se o ID do produto foi passado pela URL
 if (isset($_GET['id_produto'])) {
@@ -40,6 +42,10 @@ if (isset($_GET['id_produto'])) {
     echo "ID do produto não fornecido.";
     exit;
 }
+// Verificar se o usuário está logado e possui nível de acesso igual a 2
+if (isset($_SESSION['nivel_acesso']) && $_SESSION['nivel_acesso'] == 2) {
+    // Se o usuário possui permissão, continuar com o restante do código
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
 ?>
 
 <div>
@@ -75,5 +81,13 @@ if (isset($_GET['id_produto'])) {
 </div>
 
 <?php 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/rodape.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/rodape.php";
+} else {
+    // Se o usuário não possui permissão, defina um cookie com a mensagem de erro
+    setcookie('erro_permissao', 'Você não possui permissão para acessar esta página.', time() + 3600, '/');
+    
+    // Redirecionar para a página de index.php
+    header('Location: /Carrinho/index.php');
+    exit();
+}
 ?>

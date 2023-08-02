@@ -1,8 +1,7 @@
-<?php 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
+<?php
+// Iniciar a sessão (caso ainda não tenha sido iniciada)
+session_start();
 require_once $_SERVER["DOCUMENT_ROOT"] . '/Carrinho/db/conexao.php';
-
-
 // Função para obter todos os produtos do banco de dados
 function obterProdutos() {
     global $conn;
@@ -24,6 +23,14 @@ function obterProdutos() {
 
 // Obter os produtos do banco de dados
 $produtos = obterProdutos();
+
+// Verificar se o usuário está logado e possui nível de acesso igual a 2
+if (isset($_SESSION['nivel_acesso']) && $_SESSION['nivel_acesso'] == 2) {
+    // Se o usuário possui permissão, continuar com o restante do código
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/cabecalho.php";
+
+
+
 
 ?>
   
@@ -62,8 +69,14 @@ $produtos = obterProdutos();
 </div>
 
 
-
-
 <?php 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/rodape.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Carrinho/templates/rodape.php";
+} else {
+    // Se o usuário não possui permissão, defina um cookie com a mensagem de erro
+    setcookie('erro_permissao', 'Você não possui permissão para acessar esta página.', time() + 3600, '/');
+    
+    // Redirecionar para a página de index.php
+    header('Location: /Carrinho/index.php');
+    exit();
+}
 ?>

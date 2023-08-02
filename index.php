@@ -14,11 +14,20 @@ try {
     echo "Erro na conexão com o banco de dados: " . $e->getMessage();
 }
 
-// Verificar se o carrinho está vazio
-$carrinhoVazio = true;
-if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
-    $carrinhoVazio = false;
+// Verificar se o cookie de erro de permissão existe
+if (isset($_COOKIE['erro_permissao'])) {
+    // Armazenar o conteúdo do cookie em uma variável
+    $mensagemErro = $_COOKIE['erro_permissao'];
+
+    // Exibir a mensagem de erro na página
+    echo '<div class="alert alert-danger">' . $mensagemErro . '</div>';
+
+    // Limpar o cookie (opcional, para que a mensagem de erro não seja exibida novamente após atualizações futuras)
+    setcookie('erro_permissao', '', time() - 3600, '/');
 }
+
+
+
 ?>
 
 <div class="d-flex justify-content-center m-3">

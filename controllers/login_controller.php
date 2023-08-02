@@ -41,6 +41,8 @@ function login($email, $senha) {
             } else {
                 // Senha incorreta
                 echo "Senha incorreta.";
+                header('Location: /Carrinho/views/cadastro_usuario.php');
+                exit();
             }
         } else {
             setcookie('erro', 'Email ou senha incorretos', time() + 3600, '/');
@@ -48,6 +50,8 @@ function login($email, $senha) {
     } else {
         // Campos em branco
         echo "Por favor, preencha todos os campos.";
+        header('Location: /Carrinho/views/cadastro_usuario.php');
+        exit();
     }
 }
 
